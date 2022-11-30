@@ -1,0 +1,19 @@
+.header ul {
+  display: flex;
+  list-style: none;
+  justify-content: space-evenly;
+  background-color: #222;
+  color: #ddd;
+  height: 70px;
+  align-items: center;
+}
+
+.header a {
+  color: #ddd;
+  transition: color 0.3s;
+}
+
+.header a:hover {
+  color: violet;
+}
+
