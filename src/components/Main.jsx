@@ -1,7 +1,6 @@
 import Image from "next/image"
-import styles from "../styles/components/Main.module.css"
-
 import image from "../../public/images/image1.jpg"
+import styles from "../styles/Main.module.css"
 
 export default function Main() {
   return (

@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react"
-import Layout from "../components/Layout"
 import { getFake } from "../function/getFake"
-
-import styles from "../styles/components/Products.module.css"
+import Layout from "../components/Layout"
+import Loader from "../components/Loader"
+import styles from "../styles/Products.module.css"
 
 export default function Jewerly() {
 
@@ -19,25 +19,29 @@ export default function Jewerly() {
     getJewelry()
   }, [])
 
-  function renderJewerly() {
+  function renderProducts() {
+    return (
+      <div>
+        {
+          jewerly.map(j => {
+            return (
+              <div key={j.id} className={styles.product}>
+                <img width={280} height={280} src={j.image} />
+                <p>{j.title}</p>
+              </div>
+            )
+          })
+        }
+      </div>
+    )
+  }
+
+  function renderJewerlyPageContent() {
     return (
       <section className={styles.container}>
         <div>
           {
-            isLoading ? <div className={styles.loader}></div> : (
-              <div>
-                {
-                  jewerly.map(j => {
-                    return (
-                      <div key={j.id} className={styles.product}>
-                        <img width={280} height={280} src={j.image} />
-                        <p>{j.title}</p>
-                      </div>
-                    )
-                  })
-                }
-              </div>
-            )
+            isLoading ? <Loader /> : renderProducts()
           }
         </div>
       </section>
@@ -45,6 +49,6 @@ export default function Jewerly() {
   }
 
   return (
-    <Layout page={renderJewerly()} />
+    <Layout page={renderJewerlyPageContent()} />
   )
 }

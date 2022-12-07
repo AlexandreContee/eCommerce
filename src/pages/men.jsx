@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react"
-import Layout from "../components/Layout"
 import { getFake } from "../function/getFake"
+import Layout from "../components/Layout"
+import Loader from '../components/Loader'
 
-import styles from "../styles/components/Products.module.css"
+import styles from "../styles/Products.module.css"
 
 export default function Men() {
 
@@ -19,33 +20,34 @@ export default function Men() {
     getMenProducts()
   }, [])
 
-  function renderMenProducts() {
+  function renderProducts() {
+    return (
+      <div>
+        { menProducts.map(men => {
+            return (
+              <div key={men.id} className={styles.product}>
+                <img width={280} height={280} src={men.image} />
+                <p>{men.title}</p>
+                <p>$ {men.price}</p>
+              </div>
+            )
+          })
+        }
+      </div>
+    )
+  }
+
+  function renderMenPageContent() {
     return (
       <section className={styles.container}>
         <div>
-          {
-            isLoading ? <div className={styles.loader}></div> : (
-              <div>
-                {
-                  menProducts.map(men => {
-                    return (
-                      <div key={men.id} className={styles.product}>
-                        <img width={280} height={280} src={men.image} />
-                        <p>{men.title}</p>
-                        <p>$ {men.price}</p>
-                      </div>
-                    )
-                  })
-                }
-              </div>
-            )
-          }
+          {isLoading ? <Loader /> : renderProducts()}
         </div>
       </section>
     )
   }
 
   return (
-    <Layout page={renderMenProducts()} />
+    <Layout page={renderMenPageContent()} />
   )
 }

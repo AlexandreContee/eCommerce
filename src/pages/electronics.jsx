@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react"
-import Layout from "../components/Layout"
 import { getFake } from "../function/getFake"
-
-import styles from "../styles/components/Products.module.css"
+import Layout from "../components/Layout"
+import Loader from "..components/Loader"
+import styles from "../styles/Products.module.css"
 
 export default function Electronics() {
 
@@ -19,33 +19,33 @@ export default function Electronics() {
     getElectro()
   }, [])
 
+  function renderProducts() {
+    return (
+      <div>
+        {electro.map(el => {
+          return (
+            <div key={el.id} className={styles.product}>
+              <img width={280} height={280} src={el.image} />
+              <p>{el.title}</p>
+              <p>$ {el.price}</p>
+            </div>
+          )
+        })}
+      </div>
+    )
+  }
 
-  function renderElectronics() {
+  function renderEletronicPageContent() {
     return (
       <section className={styles.container}>
         <div>
-          {
-            isLoading ? <div className={styles.loader}>
-            </div> : (
-              <div>
-                {electro.map(el => {
-                  return (
-                    <div key={el.id} className={styles.product}>
-                      <img width={280} height={280} src={el.image} />
-                      <p>{el.title}</p>
-                      <p>$ {el.price}</p>
-                    </div>
-                  )
-                })}
-              </div>
-            )
-          }
+          {isLoading ? <Loader /> : renderProducts()}
         </div>
       </section>
     )
   }
 
   return (
-    <Layout page={renderElectronics()} />
+    <Layout page={renderEletronicPageContent()} />
   )
 }

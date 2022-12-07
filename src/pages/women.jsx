@@ -2,8 +2,8 @@
 import { useEffect, useState } from "react"
 import { getFake } from "../function/getFake"
 import Layout from "../components/Layout"
-
-import styles from "../styles/components/Products.module.css"
+import Loader from "../components/Loader"
+import styles from "../styles/Products.module.css"
 
 export default function Women() {
 
@@ -20,33 +20,34 @@ export default function Women() {
     getWomenProducts()
   }, [])
 
-  function renderWomenProducts() {
+  const renderProducts = () => {
+    return (
+      <div>
+        {womenProducts.map(women => {
+            return (
+              <div key={women.id} className={styles.product}>
+                <img width={280} height={280} src={women.image} />
+                <p>{women.title}</p>
+                <p>$ {women.price}</p>
+              </div>
+            )
+          })
+        }
+      </div>
+    )
+  }
+
+  function renderWomenPage() {
     return (
       <section className={styles.container}>
         <div>
-          {
-            isLoading ? <div className={styles.loader}></div> : (
-              <div>
-                {
-                  womenProducts.map(women => {
-                    return (
-                      <div key={women.id} className={styles.product}>
-                        <img width={280} height={280} src={women.image} />
-                        <p>{women.title}</p>
-                        <p>$ {women.price}</p>
-                      </div>
-                    )
-                  })
-                }
-              </div>
-            )
-          }
+          {isLoading ? <Loader /> : renderProducts()}
         </div>
       </section>
     )
   }
 
   return (
-    <Layout page={renderWomenProducts()} />
+    <Layout page={renderWomenPage()} />
   )
 }
