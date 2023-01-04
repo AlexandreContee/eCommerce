@@ -1,3 +1,9 @@
+.footerSpace {
+  position: relative;
+  height: 50px;
+  width: 100%;
+}
+
 .footer {
   position: fixed;
   bottom: 0;
@@ -7,5 +13,5 @@
   background-color: #222;
   color: #ddd;
   height: 50px;
-  width: 100vw;
+  width: 100%;
 }

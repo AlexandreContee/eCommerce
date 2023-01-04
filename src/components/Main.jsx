@@ -6,7 +6,7 @@ export default function Main() {
   return (
     <div className={styles.main}>
       <h1>Buy safely with our fake store API</h1>
-      <Image src={image} />
+      <Image src={image} alt="" priority />
     </div>
   )
 }

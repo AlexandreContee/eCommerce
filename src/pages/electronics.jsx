@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react"
 import { getFake } from "../function/getFake"
 import Layout from "../components/Layout"
-import Loader from "..components/Loader"
+import Loader from "../components/Loader"
 import styles from "../styles/Products.module.css"
 
 export default function Electronics() {
