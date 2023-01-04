@@ -38,6 +38,12 @@
   background-color: #5ba0d2;
   border: none;
   border-radius: 4px;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.product button:hover {
+  background-color: #327aae;
+  color: #fff;
 }
 
 .product img {
