@@ -3,6 +3,7 @@ import { getFake } from "../function/getFake"
 import Layout from "../components/Layout"
 import Loader from "../components/Loader"
 import styles from "../styles/Products.module.css"
+import Product from "../components/Product"
 
 export default function Products() {
 
@@ -21,19 +22,9 @@ export default function Products() {
 
   function renderProducts() {
     return (
-      <div>
-        {
-          products.map(product => {
-            return (
-              <div key={product.id} className={styles.product}>
-                <img width={280} height={280} src={product.image} />
-                <p>{product.title}</p>
-                <p>$ {product.price}</p>
-              </div>
-            )
-          })
-        }
-      </div>
+      <ul>
+        {products.map(product => <Product key={product.id} className={styles.product} src={product.image} title={product.title} price={product.price} /> )}
+      </ul>
     )
   }
 

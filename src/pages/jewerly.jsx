@@ -3,6 +3,7 @@ import { getFake } from "../function/getFake"
 import Layout from "../components/Layout"
 import Loader from "../components/Loader"
 import styles from "../styles/Products.module.css"
+import Product from "../components/Product"
 
 export default function Jewerly() {
 
@@ -21,18 +22,9 @@ export default function Jewerly() {
 
   function renderProducts() {
     return (
-      <div>
-        {
-          jewerly.map(j => {
-            return (
-              <div key={j.id} className={styles.product}>
-                <img width={280} height={280} src={j.image} />
-                <p>{j.title}</p>
-              </div>
-            )
-          })
-        }
-      </div>
+      <ul>
+        {jewerly.map(j => <Product key={j.id} className={styles.product} src={j.image} title={j.title} price={j.price} />)}
+      </ul>
     )
   }
 
@@ -40,9 +32,7 @@ export default function Jewerly() {
     return (
       <section className={styles.container}>
         <div>
-          {
-            isLoading ? <Loader /> : renderProducts()
-          }
+          {isLoading ? <Loader /> : renderProducts()}
         </div>
       </section>
     )

@@ -4,6 +4,7 @@ import { getFake } from "../function/getFake"
 import Layout from "../components/Layout"
 import Loader from "../components/Loader"
 import styles from "../styles/Products.module.css"
+import Product from "../components/Product"
 
 export default function Women() {
 
@@ -22,18 +23,9 @@ export default function Women() {
 
   const renderProducts = () => {
     return (
-      <div>
-        {womenProducts.map(women => {
-            return (
-              <div key={women.id} className={styles.product}>
-                <img width={280} height={280} src={women.image} />
-                <p>{women.title}</p>
-                <p>$ {women.price}</p>
-              </div>
-            )
-          })
-        }
-      </div>
+      <ul>
+        {womenProducts.map(women => <Product key={women.id} className={styles.product} src={women.image} title={women.title} price={women.price} />)}
+      </ul>
     )
   }
 

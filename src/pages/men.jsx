@@ -2,6 +2,7 @@ import { useEffect, useState } from "react"
 import { getFake } from "../function/getFake"
 import Layout from "../components/Layout"
 import Loader from '../components/Loader'
+import Product from "../components/Product"
 
 import styles from "../styles/Products.module.css"
 
@@ -22,18 +23,9 @@ export default function Men() {
 
   function renderProducts() {
     return (
-      <div>
-        { menProducts.map(men => {
-            return (
-              <div key={men.id} className={styles.product}>
-                <img width={280} height={280} src={men.image} />
-                <p>{men.title}</p>
-                <p>$ {men.price}</p>
-              </div>
-            )
-          })
-        }
-      </div>
+      <ul>
+        {menProducts.map(men => <Product key={men.id} className={styles.product} src={men.image} title={men.title} price={men.price} />)}
+      </ul>
     )
   }
 

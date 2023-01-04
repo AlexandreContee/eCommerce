@@ -1,9 +1,13 @@
 .main {
+  background-color: #444;
   text-align: center;
-  background-color: #ECEEEF;
+  color: #ddd;
 }
 
 .main img {
   width: 80%;
+  max-height: 700px;
   height: auto;
+  width: auto;
+  border-radius: 10px;
 }

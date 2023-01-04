@@ -3,6 +3,7 @@ import { getFake } from "../function/getFake"
 import Layout from "../components/Layout"
 import Loader from "../components/Loader"
 import styles from "../styles/Products.module.css"
+import Product from "../components/Product"
 
 export default function Electronics() {
 
@@ -21,17 +22,9 @@ export default function Electronics() {
 
   function renderProducts() {
     return (
-      <div>
-        {electro.map(el => {
-          return (
-            <div key={el.id} className={styles.product}>
-              <img width={280} height={280} src={el.image} />
-              <p>{el.title}</p>
-              <p>$ {el.price}</p>
-            </div>
-          )
-        })}
-      </div>
+      <ul>
+        {electro.map(el => <Product key={el.id} className={styles.product} src={el.image} title={el.title} price={el.price} />)}
+      </ul>
     )
   }
 
